@@ -1,3 +1,5 @@
+// All Components when are created are inserted here and also all the Plugins, it's like the .csproj from asp.net
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { Plugins } from 'protractor/built/plugins';
 
 @NgModule({
   declarations: [
@@ -28,3 +31,5 @@ import { LoginComponent } from './login/login.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
