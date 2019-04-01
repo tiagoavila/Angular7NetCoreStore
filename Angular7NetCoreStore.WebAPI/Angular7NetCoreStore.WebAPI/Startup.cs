@@ -29,6 +29,14 @@ namespace Angular7NetCoreStore.WebAPI
             var appSettings = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettings);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
+                });
+            });
+
             services.AddJWT(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -42,6 +50,7 @@ namespace Angular7NetCoreStore.WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("EnableCORS");
             app.UseAuthentication();
 
             app.UseMvc();

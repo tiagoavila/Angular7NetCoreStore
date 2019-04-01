@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,8 +14,9 @@ export class LoginComponent implements OnInit {
   submitted = false;
   success = false;
   loginSuccess = false;
+  invalidLogin: boolean;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.messageForm = this.formBuilder.group({
@@ -29,12 +32,31 @@ export class LoginComponent implements OnInit {
         return;
     }
 
-    this.success = true;
+    var loginModel = {
+      UserName: this.messageForm.controls.userName.value,
+      Password: this.messageForm.controls.password.value
+    };
 
-    if (this.messageForm.controls.userName.value == "user" && this.messageForm.controls.password.value == "123") {
-      this.loginSuccess = true;
-    } else {
-      this.loginSuccess = false;
-    }
+    let credentials = JSON.stringify(loginModel);
+    this.http.post("http://localhost:5000/api/auth/login", credentials, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }).subscribe(response => {
+      let token = (<any>response).token;
+      localStorage.setItem("jwt-token", token);
+      this.invalidLogin = false;
+      this.router.navigate(["/"]);
+    }, err => {
+      this.invalidLogin = true;
+    });
+
+    // this.success = true;
+
+    // if (this.messageForm.controls.userName.value == "user" && this.messageForm.controls.password.value == "123") {
+    //   this.loginSuccess = true;
+    // } else {
+    //   this.loginSuccess = false;
+    // }
   }
 }

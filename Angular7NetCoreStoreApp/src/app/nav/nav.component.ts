@@ -14,4 +14,9 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  signOut() {
+    localStorage.removeItem("jwt-token");
+    alert('fgfdf');
+ }
+
 }

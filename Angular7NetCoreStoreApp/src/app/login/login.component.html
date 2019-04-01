@@ -31,11 +31,7 @@
     <strong>Password:</strong> 
     <span>{{ messageForm.controls.password.value }}</span>
 
-    <div *ngIf="loginSuccess">
-      <strong>Login Success</strong>
-    </div>
-
-    <div *ngIf="!loginSuccess">
-      <strong>Login Fail</strong>
+    <div *ngIf="invalidLogin">
+      <strong>Attempt to login failed! Try again.</strong>
     </div>
   </div>
