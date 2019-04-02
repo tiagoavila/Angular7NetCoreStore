@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WebApiRestService } from '../web-api-rest.service';
+import { WebApiRestService } from '../../services/rest/web-api-rest.service';
 
 @Component({
   selector: 'app-home',
