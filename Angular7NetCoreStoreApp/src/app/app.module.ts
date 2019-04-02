@@ -2,6 +2,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -12,6 +13,10 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { Plugins } from 'protractor/built/plugins';
+
+export function tokenGetter() {
+  return localStorage.getItem('jwt-token');
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +30,13 @@ import { Plugins } from 'protractor/built/plugins';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
