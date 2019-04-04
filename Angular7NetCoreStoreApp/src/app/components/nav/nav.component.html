@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [hidden]='!userIsLogged'>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isLoggedIn$ | async">
   <div class="container">
     <a class="navbar-brand" routerLink="#">{{ appTitle }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
         <a class="nav-item nav-link active" routerLink="/about">About</a>
       </div>
       <div class="navbar-nav">
-        <a class="nav-item nav-link active signout-button" routerLink="" (click)="signOut()">Sign out</a>
+        <a class="nav-item nav-link active signout-button" routerLink="" (click)="logout()">Sign out</a>
       </div>
     </div>
   </div>
