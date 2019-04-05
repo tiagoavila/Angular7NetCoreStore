@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthenticationService {
       this.loggedIn.next(false);
     }
 
-    return this.loggedIn.asObservable(); // {2}
+    return this.loggedIn.asObservable(); 
   }
 
   login(userName: string, password: String){
@@ -30,28 +31,21 @@ export class AuthenticationService {
     };
 
     let credentials = JSON.stringify(loginModel);
-    this.http.post("http://localhost:5000/api/auth/login", credentials, {
+    return this.http.post("http://localhost:5000/api/auth/login", credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
-    }).subscribe(response => {
-      let token = (<any>response).token;
-      localStorage.setItem("jwt-token", token);
-      //this.loggedIn.next(true);
-      this.router.navigate(["/"]);
-    }, err => {
-      
-    });
-
-    // if (userName !== '' && password !== '' ) { // {3}
-    //   this.loggedIn.next(true);
-    //   this.router.navigate(['/']);
-    // }
+    }).pipe(map(response => {
+      // login successful if there's a jwt token in the response
+      if ((<any>response).token) {
+        let token = (<any>response).token;
+        localStorage.setItem("jwt-token", token);
+      }
+    }));
   }
 
   logout() {
     localStorage.removeItem("jwt-token");
     this.loggedIn.next(false);
-    this.router.navigate(['/login']);
   }
 }

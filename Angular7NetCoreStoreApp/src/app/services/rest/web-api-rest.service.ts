@@ -11,4 +11,8 @@ export class WebApiRestService {
   getUsers() {
     return this.http.get('https://reqres.in/api/users')
   }
+
+  getOrders() {
+    return this.http.get('http://localhost:5000/api/orders')
+  }
 }

@@ -16,8 +16,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.webApiRest.getUsers().subscribe(data => {
       this.users = data;
-      console.log(this.users);
-    }
-  );
+    });
+  }
+
+  getOrders() {
+    this.webApiRest.getOrders().subscribe(data => {
+      console.log(data);
+    });
   }
 }

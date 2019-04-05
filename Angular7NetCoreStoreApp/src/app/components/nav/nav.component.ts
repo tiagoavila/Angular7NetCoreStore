@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { Router  } from '@angular/router';
+
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 
@@ -15,12 +15,7 @@ export class NavComponent implements OnInit {
   appTitle: string = 'Angular7NetCoreStore App';
   isLoggedIn$: Observable<boolean>;
 
-  constructor(private router: Router, private jwtHelper: JwtHelperService, private authService: AuthenticationService) { 
-    // this.router.events.subscribe((ev) => {
-    //   if (ev instanceof NavigationEnd) { 
-    //     this.checkIfUserIsLogged();
-    //   }
-    // });
+  constructor(private authService: AuthenticationService, private router: Router) { 
   }
 
   ngOnInit() {
@@ -36,5 +31,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -25,12 +25,6 @@
   </form>
 
   <div *ngIf="submitted" class="results">
-    <strong>Username:</strong> 
-    <span>{{ messageForm.controls.userName.value }}</span>
-
-    <strong>Password:</strong> 
-    <span>{{ messageForm.controls.password.value }}</span>
-
     <div *ngIf="invalidLogin">
       <strong>Attempt to login failed! Try again.</strong>
     </div>
