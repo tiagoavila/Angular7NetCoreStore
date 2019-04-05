@@ -1,6 +1,4 @@
-<h1>Login</h1>
-
-<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
 
     <h5 *ngIf="success">Your form is valid!</h5>
 
@@ -22,10 +20,54 @@
 
     <input type="submit" value="Login" class="cta">
   
-  </form>
+  </form> -->
 
-  <div *ngIf="submitted" class="results">
-    <div *ngIf="invalidLogin">
-      <strong>Attempt to login failed! Try again.</strong>
+  <div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center text-white mb-4">Bootstrap 4 Login Form</h2>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+
+                <!-- form card login -->
+                <div class="card rounded-0">
+                    <div class="card-header">
+                        <h3 class="mb-0">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="form" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="uname1">Username</label>
+                                <input type="text" formControlName="userName" class="form-control form-control-lg rounded-0">
+                                <!-- <div class="invalid-feedback">Oops, you missed this one.</div> -->
+                                <div *ngIf="submitted && messageForm.controls.userName.errors" class="error">
+                                  <div *ngIf="messageForm.controls.userName.errors.required" class="text-danger">Your username is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" formControlName="password" class="form-control form-control-lg rounded-0">
+                                <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+                                  <div *ngIf="messageForm.controls.password.errors.required" class="text-danger">A password is required</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                        </form>
+                    </div>
+                    <!--/card-block-->
+                    <div *ngIf="submitted" class="results">
+                      <div *ngIf="invalidLogin">
+                        <strong>Attempt to login failed! Try again.</strong>
+                      </div>
+                    </div>
+                </div>
+                <!-- /form card login -->
+
+            </div>
+
+
+        </div>
+        <!--/row-->
+
     </div>
-  </div>
+    <!--/col-->
+</div>
