@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Angular7NetCoreStore.Domain\Angular7NetCoreStore.Domain.csproj" />
+    <ProjectReference Include="..\Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

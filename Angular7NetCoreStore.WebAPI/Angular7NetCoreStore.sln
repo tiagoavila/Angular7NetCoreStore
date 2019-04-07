@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 -
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Domain", "Angular7NetCoreStore.Domain\Angular7NetCoreStore.Domain.csproj", "{A0F22742-7858-45AC-903B-16F18107991E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Domain.Shared", "Angular7NetCoreStore.Domain.Shared\Angular7NetCoreStore.Domain.Shared.csproj", "{944F3DE6-EF04-49B1-B1DF-724660640E99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Domain.Shared", "Angular7NetCoreStore.Domain.Shared\Angular7NetCoreStore.Domain.Shared.csproj", "{944F3DE6-EF04-49B1-B1DF-724660640E99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Infra.Data", "Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj", "{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Infra.Data", "Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj", "{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Infra.CrossCutting.IoC", "Angular7NetCoreStore.Infra.CrossCutting.IoC\Angular7NetCoreStore.Infra.CrossCutting.IoC.csproj", "{FF9F0632-1041-47AA-975C-BE6F72AFF34D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{A0F22742-7858-45AC-903B-16F18107991E} = {EB8A3BE9-D797-496C-8D08-EC7C17082443}
 		{944F3DE6-EF04-49B1-B1DF-724660640E99} = {EB8A3BE9-D797-496C-8D08-EC7C17082443}
 		{38FF4222-8869-4BB0-8DC8-3561E24ABCAE} = {580055D6-0400-4334-B627-B46839A135C0}
+		{FF9F0632-1041-47AA-975C-BE6F72AFF34D} = {6F4FFF4A-2653-4014-8A5F-6E173782F578}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88447C57-AD99-4F01-9EEF-0C6CF69D521C}
