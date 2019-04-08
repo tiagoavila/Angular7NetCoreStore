@@ -25,7 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Infra.Data", "Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj", "{38FF4222-8869-4BB0-8DC8-3561E24ABCAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Infra.CrossCutting.IoC", "Angular7NetCoreStore.Infra.CrossCutting.IoC\Angular7NetCoreStore.Infra.CrossCutting.IoC.csproj", "{FF9F0632-1041-47AA-975C-BE6F72AFF34D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular7NetCoreStore.Infra.CrossCutting.IoC", "Angular7NetCoreStore.Infra.CrossCutting.IoC\Angular7NetCoreStore.Infra.CrossCutting.IoC.csproj", "{FF9F0632-1041-47AA-975C-BE6F72AFF34D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Application", "Angular7NetCoreStore.Application\Angular7NetCoreStore.Application.csproj", "{3268B64E-C06F-441C-8998-9E2BA1F4A2FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Infra.CrossCutting.Library", "Angular7NetCoreStore.Infra.CrossCutting.Library\Angular7NetCoreStore.Infra.CrossCutting.Library.csproj", "{D0870F45-FBBD-4F9B-81EC-956936ACA62F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Angular7NetCoreStore.Infra.CrossCutting.Identity", "Angular7NetCoreStore.Infra.CrossCutting.Identity\Angular7NetCoreStore.Infra.CrossCutting.Identity.csproj", "{7E431D20-08D1-4600-BD5D-1A7A8E313DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,18 @@ Global
 		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF9F0632-1041-47AA-975C-BE6F72AFF34D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3268B64E-C06F-441C-8998-9E2BA1F4A2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3268B64E-C06F-441C-8998-9E2BA1F4A2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3268B64E-C06F-441C-8998-9E2BA1F4A2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3268B64E-C06F-441C-8998-9E2BA1F4A2FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0870F45-FBBD-4F9B-81EC-956936ACA62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0870F45-FBBD-4F9B-81EC-956936ACA62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0870F45-FBBD-4F9B-81EC-956936ACA62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0870F45-FBBD-4F9B-81EC-956936ACA62F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E431D20-08D1-4600-BD5D-1A7A8E313DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E431D20-08D1-4600-BD5D-1A7A8E313DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E431D20-08D1-4600-BD5D-1A7A8E313DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E431D20-08D1-4600-BD5D-1A7A8E313DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +83,9 @@ Global
 		{944F3DE6-EF04-49B1-B1DF-724660640E99} = {EB8A3BE9-D797-496C-8D08-EC7C17082443}
 		{38FF4222-8869-4BB0-8DC8-3561E24ABCAE} = {580055D6-0400-4334-B627-B46839A135C0}
 		{FF9F0632-1041-47AA-975C-BE6F72AFF34D} = {6F4FFF4A-2653-4014-8A5F-6E173782F578}
+		{3268B64E-C06F-441C-8998-9E2BA1F4A2FC} = {FBD76B0B-D2D8-41B6-ABB4-B434F299EBA2}
+		{D0870F45-FBBD-4F9B-81EC-956936ACA62F} = {6F4FFF4A-2653-4014-8A5F-6E173782F578}
+		{7E431D20-08D1-4600-BD5D-1A7A8E313DA6} = {6F4FFF4A-2653-4014-8A5F-6E173782F578}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {88447C57-AD99-4F01-9EEF-0C6CF69D521C}

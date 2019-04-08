@@ -14,12 +14,12 @@ namespace Angular7NetCoreStore.Infra.Data.Mappings
 
             builder.Property(c => c.Name)
                 .HasColumnType("varchar(200)")
-                .HasMaxLength(100)
+                .HasMaxLength(200)
                 .IsRequired();
 
             builder.Property(c => c.PhoneNumber)
                 .HasColumnType("varchar(20)")
-                .HasMaxLength(100)
+                .HasMaxLength(20)
                 .IsRequired();
 
             builder.Property(c => c.Email)

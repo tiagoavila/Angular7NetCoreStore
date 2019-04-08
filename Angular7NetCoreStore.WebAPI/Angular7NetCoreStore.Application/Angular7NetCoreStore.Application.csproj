@@ -5,9 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Angular7NetCoreStore.Application\Angular7NetCoreStore.Application.csproj" />
+    <PackageReference Include="ValueInjecter" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Angular7NetCoreStore.Domain\Angular7NetCoreStore.Domain.csproj" />
-    <ProjectReference Include="..\Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

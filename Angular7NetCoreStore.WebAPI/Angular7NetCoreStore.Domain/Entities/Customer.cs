@@ -24,6 +24,5 @@ namespace Angular7NetCoreStore.Domain.Entities
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; private set; }
-
     }
 }

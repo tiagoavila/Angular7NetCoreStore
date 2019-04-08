@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Angular7NetCoreStore.Domain.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Angular7NetCoreStore.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Angular7NetCoreStore.WebAPI.Controllers
@@ -12,18 +7,18 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerAppService _customerAppService;
 
-        public CustomerController(ICustomerRepository customerRepository)
+        public CustomerController(ICustomerAppService customerAppService)
         {
-            _customerRepository = customerRepository;
+            _customerAppService = customerAppService;
         }
 
         // GET: api/Customer
         [HttpGet]
         public IActionResult GetAll()
         {
-            var customers = _customerRepository.GetAll();
+            var customers = _customerAppService.GetAll();
             return Ok(customers);
         }
 
