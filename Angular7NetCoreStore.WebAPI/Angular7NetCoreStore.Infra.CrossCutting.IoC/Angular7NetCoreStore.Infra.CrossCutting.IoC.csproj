@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Angular7NetCoreStore.Application\Angular7NetCoreStore.Application.csproj" />
     <ProjectReference Include="..\Angular7NetCoreStore.Domain\Angular7NetCoreStore.Domain.csproj" />
+    <ProjectReference Include="..\Angular7NetCoreStore.Infra.CrossCutting.Identity\Angular7NetCoreStore.Infra.CrossCutting.Identity.csproj" />
     <ProjectReference Include="..\Angular7NetCoreStore.Infra.Data\Angular7NetCoreStore.Infra.Data.csproj" />
   </ItemGroup>
 

@@ -5,8 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.WebAPI.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -19,20 +21,28 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
     {
         private readonly AppSettings _appSettings;
 
-        public AuthController(IOptions<AppSettings> appSettings)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public AuthController(IOptions<AppSettings> appSettings,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _appSettings = appSettings.Value;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost, Route("login")]
-        public IActionResult Login([FromBody]LoginModel user)
+        public async Task<IActionResult> LoginAsync([FromBody]LoginModel user)
         {
             if (user == null)
             {
                 return BadRequest("Invalid client request");
             }
 
-            if (user.UserName == "user" && user.Password == "123")
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, lockoutOnFailure: false);
+            if (result.Succeeded)
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.AuthenticationSettings.SecretKey));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -52,6 +62,31 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
             {
                 return Unauthorized();
             }
+        }
+
+        [HttpGet("Register")]
+        public async Task<IActionResult> Register()
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = new ApplicationUser { UserName = "", Email = "" };
+
+                    var result = await _userManager.CreateAsync(user, "");
+                    if (result.Succeeded)
+                    {
+                        return Ok();
+                    }
+                }
+            }
+            catch (System.Exception exception)
+            {
+
+                throw;
+            }
+
+            return Ok();
         }
     }
 }

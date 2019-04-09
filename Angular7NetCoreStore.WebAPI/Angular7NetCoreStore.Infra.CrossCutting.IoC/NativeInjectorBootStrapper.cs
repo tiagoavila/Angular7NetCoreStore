@@ -1,6 +1,8 @@
 ﻿using Angular7NetCoreStore.Application;
 using Angular7NetCoreStore.Application.Interfaces;
 using Angular7NetCoreStore.Domain.Interfaces;
+using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
+using Angular7NetCoreStore.Infra.CrossCutting.Identity.Services;
 using Angular7NetCoreStore.Infra.Data.Context;
 using Angular7NetCoreStore.Infra.Data.Repositories;
 using Angular7NetCoreStore.Infra.Data.UoW;
@@ -19,6 +21,13 @@ namespace Angular7NetCoreStore.Infra.CrossCutting.IoC
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<Angular7NetCoreStoreContext>();
+
+            // Infra - Identity Services
+            services.AddTransient<IEmailSender, AuthEmailMessageSender>();
+            services.AddTransient<ISmsSender, AuthSMSMessageSender>();
+
+            // Infra - Identity
+            services.AddScoped<IUser, AspNetUser>();
         }
     }
 }
