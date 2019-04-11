@@ -1,5 +1,5 @@
-﻿using Angular7NetCoreStore.Application.Interfaces;
-using Angular7NetCoreStore.Application.ViewModels;
+﻿using Angular7NetCoreStore.Application.Dtos;
+using Angular7NetCoreStore.Application.Interfaces;
 using Angular7NetCoreStore.Domain.Interfaces;
 using Omu.ValueInjecter;
 using System;
@@ -17,10 +17,10 @@ namespace Angular7NetCoreStore.Application
             _customerRepository = customerRepository;
         }
 
-        public IEnumerable<CustomerViewModel> GetAll()
+        public IEnumerable<CustomerDto> GetAll()
         {
             var customerViewModelsList = _customerRepository.GetAll()
-                .Select(x => new CustomerViewModel().InjectFrom(x)).Cast<CustomerViewModel>();
+                .Select(x => new CustomerDto().InjectFrom(x)).Cast<CustomerDto>();
 
             return customerViewModelsList;
         }

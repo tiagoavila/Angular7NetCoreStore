@@ -19,10 +19,12 @@ namespace Angular7NetCoreStore.Infra.Data.Context
         }
 
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerMap());
+            modelBuilder.ApplyConfiguration(new ProductMap());
 
             base.OnModelCreating(modelBuilder);
         }

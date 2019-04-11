@@ -1,5 +1,6 @@
 ﻿using Angular7NetCoreStore.Application;
 using Angular7NetCoreStore.Application.Interfaces;
+using Angular7NetCoreStore.Application.Services;
 using Angular7NetCoreStore.Domain.Interfaces;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Services;
@@ -16,9 +17,11 @@ namespace Angular7NetCoreStore.Infra.CrossCutting.IoC
         {
             // Application
             services.AddScoped<ICustomerAppService, CustomerAppService>();
+            services.AddScoped<IProductAppService, ProductAppService>();
 
             // Infra - Data
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<Angular7NetCoreStoreContext>();
 

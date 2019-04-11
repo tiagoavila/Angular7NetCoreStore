@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Angular7NetCoreStore.Application.ViewModels
+namespace Angular7NetCoreStore.Application.Dtos
 {
-    public class CustomerViewModel
+    public class CustomerDto
     {
         public string Name { get; set; }
         public string Email { get; set; }

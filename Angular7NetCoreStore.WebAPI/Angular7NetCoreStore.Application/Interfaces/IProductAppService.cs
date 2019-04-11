@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Angular7NetCoreStore.Application.Interfaces
 {
-    public interface ICustomerAppService : IDisposable
+    public interface IProductAppService : IDisposable
     {
-        IEnumerable<CustomerDto> GetAll();
+        IEnumerable<ProductDto> GetAll();
     }
 }

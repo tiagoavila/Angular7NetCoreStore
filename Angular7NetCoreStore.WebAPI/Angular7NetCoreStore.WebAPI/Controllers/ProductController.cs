@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Angular7NetCoreStore.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Angular7NetCoreStore.WebAPI.Controllers
@@ -11,29 +7,36 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class OrdersController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        // GET: api/Order
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IProductAppService _productAppService;
+
+        public ProductController(IProductAppService productAppService)
         {
-            return new string[] { "value1", "value2" };
+            _productAppService = productAppService;
         }
 
-        // GET: api/Order/5
-        [HttpGet("{id}", Name = "Get")]
+        // GET: api/Products
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_productAppService.GetAll());
+        }
+
+        // GET: api/Products/5
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Order
+        // POST: api/Products
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT: api/Order/5
+        // PUT: api/Products/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

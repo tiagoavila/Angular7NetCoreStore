@@ -4,6 +4,8 @@ using Angular7NetCoreStore.Infra.CrossCutting.IoC;
 using Angular7NetCoreStore.Infra.Data.Context;
 using Angular7NetCoreStore.WebAPI.Extensions;
 using Angular7NetCoreStore.WebAPI.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -48,6 +50,14 @@ namespace Angular7NetCoreStore.WebAPI
             });
 
             services.AddJWT(Configuration);
+
+            //Enable the token use to access the resources of this application
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
