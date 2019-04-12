@@ -23,3 +23,14 @@ The goal of this project is to share knowledge with the technical community and 
 * [CSS](https://www.w3schools.com/css)
 * [SASS](https://sass-lang.com)
 * [JWT](https://jwt.io)
+
+## Practices
+
+* Clean Code
+* SOLID Principles
+* DDD (Domain-Driven Design)
+* Inversion of Control
+* Repository Pattern
+* Database Migrations
+* Authentication
+* Auhorization
