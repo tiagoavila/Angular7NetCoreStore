@@ -7,5 +7,7 @@ namespace Angular7NetCoreStore.Application.Interfaces
     public interface IProductAppService : IDisposable
     {
         IEnumerable<ProductDto> GetAll();
+
+        ProductDto GetById(Guid id);
     }
 }

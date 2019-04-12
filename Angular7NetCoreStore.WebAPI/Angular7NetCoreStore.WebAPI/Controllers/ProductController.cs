@@ -1,6 +1,7 @@
 ﻿using Angular7NetCoreStore.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Angular7NetCoreStore.WebAPI.Controllers
 {
@@ -16,36 +17,18 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
             _productAppService = productAppService;
         }
 
-        // GET: api/Products
+        // GET: api/Product
         [HttpGet]
         public IActionResult Get()
         {
             return Ok(_productAppService.GetAll());
         }
 
-        // GET: api/Products/5
+        // GET: api/Product/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return "value";
-        }
-
-        // POST: api/Products
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Products/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(_productAppService.GetById(id));
         }
     }
 }

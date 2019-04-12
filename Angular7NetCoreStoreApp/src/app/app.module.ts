@@ -6,14 +6,16 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ErrorInterceptor } from './interceptors/httperror.interceptor';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-
-import { ErrorInterceptor } from './interceptors/httperror.interceptor';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt-token');
@@ -25,7 +27,9 @@ export function tokenGetter() {
     NavComponent,
     AboutComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

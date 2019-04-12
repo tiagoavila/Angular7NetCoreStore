@@ -22,6 +22,19 @@ namespace Angular7NetCoreStore.Application.Services
             return _productRepository.GetAll().Select(x => new ProductDto().InjectFrom(x)).Cast<ProductDto>();
         }
 
+        public ProductDto GetById(Guid id)
+        {
+            ProductDto productDto = null;
+
+            var product = _productRepository.GetById(id);
+            if (product != null)
+            {
+                productDto = Mapper.Map<ProductDto>(product);
+            }
+
+            return productDto;
+        }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);
