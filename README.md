@@ -2,7 +2,7 @@
 
 Angular7NetCoreStore is a sample application using Angular7 at front-end, .NET Core 2.1 at back-end and SQL Server as database.
 
-The goal of this project is to work on some patterns, good practices and new technologies. 
+The goal of this project is to share knowledge with the technical community and work on some patterns, good practices and new technologies. 
 
 ## Architecture
 
