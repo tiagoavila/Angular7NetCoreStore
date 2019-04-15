@@ -27,6 +27,9 @@ namespace Angular7NetCoreStore.Infra.Data.Mappings
                 .HasMaxLength(100)
                 .IsRequired();
 
+            var navigation = builder.Metadata.FindNavigation(nameof(Customer.Addresses));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+
             builder.HasData(new Customer(Guid.NewGuid(), "Tiago Aparecido de Ávila", "tiago.avila09@gmail.com", "(35)99218-3713", new DateTime(1991, 7, 9)));
         }
     }

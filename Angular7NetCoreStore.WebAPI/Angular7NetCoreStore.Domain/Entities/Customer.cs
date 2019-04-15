@@ -1,5 +1,6 @@
 ﻿using Angular7NetCoreStore.Domain.Shared;
 using System;
+using System.Collections.Generic;
 
 namespace Angular7NetCoreStore.Domain.Entities
 {
@@ -12,6 +13,7 @@ namespace Angular7NetCoreStore.Domain.Entities
             Email = email;
             PhoneNumber = phoneNumber;
             BirthDate = birthDate;
+            addresses = new List<Address>();
         }
 
         // Empty constructor for EF
@@ -24,5 +26,14 @@ namespace Angular7NetCoreStore.Domain.Entities
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; private set; }
+
+        private readonly List<Address> addresses;
+
+        public IReadOnlyCollection<Address> Addresses => addresses.ToArray();
+
+        public void AddAddress(Address address)
+        {
+            addresses.Add(address);
+        }
     }
 }
