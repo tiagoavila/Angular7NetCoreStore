@@ -1,7 +1,6 @@
 ﻿using Angular7NetCoreStore.Infra.CrossCutting.Identity.Data;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.Infra.CrossCutting.IoC;
-using Angular7NetCoreStore.Infra.Data.Context;
 using Angular7NetCoreStore.WebAPI.Extensions;
 using Angular7NetCoreStore.WebAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

@@ -13,7 +13,7 @@ namespace Angular7NetCoreStore.Domain.Entities
             Email = email;
             PhoneNumber = phoneNumber;
             BirthDate = birthDate;
-            addresses = new List<Address>();
+            _addresses = new List<Address>();
         }
 
         // Empty constructor for EF
@@ -27,13 +27,13 @@ namespace Angular7NetCoreStore.Domain.Entities
         public string PhoneNumber { get; set; }
         public DateTime BirthDate { get; private set; }
 
-        private readonly List<Address> addresses;
+        private readonly List<Address> _addresses;
 
-        public IReadOnlyCollection<Address> Addresses => addresses.ToArray();
+        public IReadOnlyCollection<Address> Addresses => _addresses.ToArray();
 
         public void AddAddress(Address address)
         {
-            addresses.Add(address);
+            _addresses.Add(address);
         }
     }
 }

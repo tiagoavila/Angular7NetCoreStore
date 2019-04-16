@@ -71,9 +71,9 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var user = new ApplicationUser { UserName = "", Email = "" };
+                    var user = new ApplicationUser { UserName = "tiago.avila09@gmail.com", Email = "tiago.avila09@gmail.com" };
 
-                    var result = await _userManager.CreateAsync(user, "");
+                    var result = await _userManager.CreateAsync(user, "Green!day1");
                     if (result.Succeeded)
                     {
                         return Ok();
