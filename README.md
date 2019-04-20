@@ -30,6 +30,7 @@ The goal of this project is to share knowledge with the technical community and 
 * Clean Code
 * SOLID Principles
 * DDD (Domain-Driven Design)
+* Commands and Handlers
 * Inversion of Control
 * Repository Pattern
 * Database Migrations
