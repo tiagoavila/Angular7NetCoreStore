@@ -1,6 +1,7 @@
 ﻿using Angular7NetCoreStore.Domain.Entities;
 using Angular7NetCoreStore.Domain.Enums;
 using Angular7NetCoreStore.Domain.Shared;
+using Angular7NetCoreStore.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 

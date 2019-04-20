@@ -5,6 +5,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Angular7NetCoreStore.Application.Dtos;
+using Angular7NetCoreStore.Application.Interfaces;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.WebAPI.Models;
 using Microsoft.AspNetCore.Http;
@@ -23,14 +25,17 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ICustomerAppService _customerAppService;
 
         public AuthController(IOptions<AppSettings> appSettings,
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            ICustomerAppService customerAppService)
         {
             _appSettings = appSettings.Value;
             _userManager = userManager;
             _signInManager = signInManager;
+            _customerAppService = customerAppService;
         }
 
         [HttpPost, Route("login")]
@@ -64,20 +69,20 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
             }
         }
 
-        [HttpGet("Register")]
-        public async Task<IActionResult> Register()
+        [HttpPost("Register")]
+        public async Task<IActionResult> Register(AddCustomerDto addCustomerDto)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var user = new ApplicationUser { UserName = "tiago.avila09@gmail.com", Email = "tiago.avila09@gmail.com" };
-
-                    var result = await _userManager.CreateAsync(user, "Green!day1");
-                    if (result.Succeeded)
+                    var commandResult = await _customerAppService.AddCustomerAsync(addCustomerDto);
+                    if (commandResult.Success)
                     {
                         return Ok();
                     }
+
+                    return BadRequest();
                 }
             }
             catch (System.Exception exception)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace Angular7NetCoreStore.Infra.CrossCutting.Identity.Models
 {
@@ -7,7 +8,9 @@ namespace Angular7NetCoreStore.Infra.CrossCutting.Identity.Models
     {
         public ApplicationUser() : base()
         {
-
+            
         }
+
+        public Guid CustomerId { get; set; }
     }
 }

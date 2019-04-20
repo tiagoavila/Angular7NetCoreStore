@@ -4,14 +4,16 @@ using Angular7NetCoreStore.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Angular7NetCoreStore.Infra.Data.Migrations
 {
     [DbContext(typeof(Angular7NetCoreStoreContext))]
-    partial class Angular7NetCoreStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20190419220105_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,10 +29,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
 
                     b.Property<DateTime>("BirthDate");
 
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<DateTime>("UpdateDate");
-
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
@@ -42,8 +40,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id");
 
-                    b.Property<DateTime>("CreateDate");
-
                     b.Property<Guid?>("OrderId");
 
                     b.Property<decimal>("Price");
@@ -51,8 +47,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                     b.Property<Guid?>("ProductId");
 
                     b.Property<decimal>("Quantity");
-
-                    b.Property<DateTime>("UpdateDate");
 
                     b.HasKey("Id");
 
@@ -68,8 +62,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id");
-
-                    b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -90,8 +82,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                         .HasColumnType("varchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<DateTime>("UpdateDate");
-
                     b.HasKey("Id");
 
                     b.ToTable("Products");
@@ -99,36 +89,30 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("76bf59f0-ffb0-401c-b460-6868d8f924b4"),
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("3d67fac4-c9fc-4673-9caa-e1197b1f8e7d"),
                             Description = "Guitarra Ibanex GRG220 Preta",
                             Image = "https://http2.mlstatic.com/guitarra-electrica-ibanez-gio-grg220dex-D_NQ_NP_760329-MLV27359093213_052018-F.jpg",
                             Price = 1200m,
                             QuantityOnHand = 50m,
-                            Title = "Guitarra Ibanex GRG220",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Title = "Guitarra Ibanex GRG220"
                         },
                         new
                         {
-                            Id = new Guid("5d272276-891c-469a-a653-04f075b2c51a"),
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("f74b1ec5-ba80-4fc1-96af-8d233d999db0"),
                             Description = "Samsung s9",
                             Image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_iIgH_ErtqFO1tiMpysB3Z5VeJUjaThLCtKkajwXA_V4GXkp",
                             Price = 2000m,
                             QuantityOnHand = 50m,
-                            Title = "Celular S9",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Title = "Celular S9"
                         },
                         new
                         {
-                            Id = new Guid("f2118dcc-60fd-427d-819b-52b2f0ded139"),
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = new Guid("55b0674f-476b-4ee1-bc44-43632743c317"),
                             Description = "Kindle new generation",
                             Image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHmy5pzaQxrs4nzLNXP0Ca-1zkBgzfLCwOMjxmDFDx02FGSzI6",
                             Price = 200m,
                             QuantityOnHand = 50m,
-                            Title = "Kindle",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Title = "Kindle"
                         });
                 });
 
@@ -143,8 +127,6 @@ namespace Angular7NetCoreStore.Infra.Data.Migrations
                     b.Property<Guid>("CustomerId");
 
                     b.Property<int>("Status");
-
-                    b.Property<DateTime>("UpdateDate");
 
                     b.HasKey("Id");
 

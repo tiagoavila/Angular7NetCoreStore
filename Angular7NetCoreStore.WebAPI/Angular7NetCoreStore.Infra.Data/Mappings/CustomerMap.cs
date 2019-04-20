@@ -1,7 +1,6 @@
 ﻿using Angular7NetCoreStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace Angular7NetCoreStore.Infra.Data.Mappings
 {
@@ -12,25 +11,53 @@ namespace Angular7NetCoreStore.Infra.Data.Mappings
             builder.Property(c => c.Id)
                 .HasColumnName("Id");
 
-            builder.Property(c => c.Name)
-                .HasColumnType("varchar(200)")
+            builder.OwnsOne(x => x.FullName, y =>
+            {
+                y.Property(x => x.Name).IsRequired().HasMaxLength(100);
+                y.Property(x => x.Surname).IsRequired().HasMaxLength(200);
+            });
+
+            builder.OwnsOne(x => x.Email, y =>
+            {
+                y.Property(x => x.Address).IsRequired().HasMaxLength(200);
+            });
+
+            builder.OwnsOne(x => x.PhoneNumber, y =>
+            {
+                y.Property(x => x.AreaCode).IsRequired().HasMaxLength(2);
+                y.Property(x => x.Number).IsRequired().HasMaxLength(20);
+            });
+
+            builder.OwnsOne(x => x.Address, y =>
+            {
+                y.Property(c => c.Street)
                 .HasMaxLength(200)
                 .IsRequired();
 
-            builder.Property(c => c.PhoneNumber)
-                .HasColumnType("varchar(20)")
-                .HasMaxLength(20)
-                .IsRequired();
+                y.Property(c => c.Complement)
+                    .HasMaxLength(100)
+                    .IsRequired();
 
-            builder.Property(c => c.Email)
-                .HasColumnType("varchar(100)")
-                .HasMaxLength(100)
-                .IsRequired();
+                y.Property(c => c.District)
+                    .HasMaxLength(100)
+                    .IsRequired();
 
-            var navigation = builder.Metadata.FindNavigation(nameof(Customer.Addresses));
-            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+                y.Property(c => c.City)
+                    .HasMaxLength(100)
+                    .IsRequired();
 
-            builder.HasData(new Customer(Guid.NewGuid(), "Tiago Aparecido de Ávila", "tiago.avila09@gmail.com", "(35)99218-3713", new DateTime(1991, 7, 9)));
+                y.Property(c => c.State)
+                    .HasMaxLength(30)
+                    .IsRequired();
+
+                y.Property(c => c.Country)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                y.Property(c => c.ZipCode)
+                    .HasMaxLength(20)
+                    .IsRequired();
+            });
         }
     }
 }

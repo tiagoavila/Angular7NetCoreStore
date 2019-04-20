@@ -1,19 +1,29 @@
 ﻿using Angular7NetCoreStore.Domain.Shared;
+using Angular7NetCoreStore.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
 
 namespace Angular7NetCoreStore.Domain.Entities
 {
     public class Customer : EntityBase
     {
-        public Customer(Guid id, string name, string email, string phoneNumber, DateTime birthDate)
+        public Customer(FullName fullName, Email email, PhoneNumber phoneNumber, DateTime birthDate, Address address)
         {
-            Id = id;
-            Name = name;
+            Id = Guid.NewGuid();
+            FullName = fullName;
             Email = email;
             PhoneNumber = phoneNumber;
             BirthDate = birthDate;
-            _addresses = new List<Address>();
+            Address = address;
+        }
+
+        public Customer(Guid id, FullName fullName, Email email, PhoneNumber phoneNumber, DateTime birthDate, Address address)
+        {
+            Id = id;
+            FullName = fullName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            BirthDate = birthDate;
+            Address = address;
         }
 
         // Empty constructor for EF
@@ -22,18 +32,10 @@ namespace Angular7NetCoreStore.Domain.Entities
 
         }
 
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public FullName FullName { get; set; }
+        public Email Email { get; set; }
+        public PhoneNumber PhoneNumber { get; set; }
         public DateTime BirthDate { get; private set; }
-
-        private readonly List<Address> _addresses;
-
-        public IReadOnlyCollection<Address> Addresses => _addresses.ToArray();
-
-        public void AddAddress(Address address)
-        {
-            _addresses.Add(address);
-        }
+        public Address Address { get; private set; }
     }
 }

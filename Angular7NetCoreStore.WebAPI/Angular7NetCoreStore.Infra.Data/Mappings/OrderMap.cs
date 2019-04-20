@@ -14,7 +14,36 @@ namespace Angular7NetCoreStore.Infra.Data.Mappings
                 .WithMany()
                 .HasForeignKey(o => o.CustomerId);
 
-            builder.HasOne(o => o.Address);
+            builder.OwnsOne(x => x.Address, y =>
+            {
+                y.Property(c => c.Street)
+                .HasMaxLength(200)
+                .IsRequired();
+
+                y.Property(c => c.Complement)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                y.Property(c => c.District)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                y.Property(c => c.City)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                y.Property(c => c.State)
+                    .HasMaxLength(30)
+                    .IsRequired();
+
+                y.Property(c => c.Country)
+                    .HasMaxLength(100)
+                    .IsRequired();
+
+                y.Property(c => c.ZipCode)
+                    .HasMaxLength(20)
+                    .IsRequired();
+            });
 
             var navigation = builder.Metadata.FindNavigation(nameof(Order.OrderItems));
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);

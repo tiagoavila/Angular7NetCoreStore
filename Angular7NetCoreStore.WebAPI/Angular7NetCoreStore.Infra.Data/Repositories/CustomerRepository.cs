@@ -1,6 +1,7 @@
 ﻿using Angular7NetCoreStore.Domain.Entities;
 using Angular7NetCoreStore.Domain.Interfaces;
 using Angular7NetCoreStore.Infra.Data.Context;
+using System.Linq;
 
 namespace Angular7NetCoreStore.Infra.Data.Repositories
 {
@@ -10,6 +11,11 @@ namespace Angular7NetCoreStore.Infra.Data.Repositories
             : base(context)
         {
 
+        }
+
+        public Customer GetByEmail(string email)
+        {
+            return DbSet.FirstOrDefault(c => c.Email.Address == email);
         }
     }
 }

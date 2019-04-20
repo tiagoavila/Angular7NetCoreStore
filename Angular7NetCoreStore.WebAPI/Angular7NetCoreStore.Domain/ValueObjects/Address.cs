@@ -1,12 +1,8 @@
-﻿using Angular7NetCoreStore.Domain.Shared;
-using System;
-
-namespace Angular7NetCoreStore.Domain.Entities
+﻿namespace Angular7NetCoreStore.Domain.ValueObjects
 {
-    public class Address : EntityBase
+    public sealed class Address
     {
-        public Address(Guid customerId,
-            string street,
+        public Address(string street,
             string number,
             string complement,
             string district,
@@ -15,7 +11,6 @@ namespace Angular7NetCoreStore.Domain.Entities
             string country,
             string zipCode)
         {
-            CustomerId = customerId;
             Street = street;
             Number = number;
             Complement = complement;
@@ -26,12 +21,6 @@ namespace Angular7NetCoreStore.Domain.Entities
             ZipCode = zipCode;
         }
 
-        // required by EF
-        protected Address()
-        {
-
-        }
-
         public string Street { get; private set; }
         public string Number { get; private set; }
         public string Complement { get; private set; }
@@ -40,8 +29,5 @@ namespace Angular7NetCoreStore.Domain.Entities
         public string State { get; private set; }
         public string Country { get; private set; }
         public string ZipCode { get; private set; }
-        public Guid CustomerId { get; private set; }
-
-        public Customer Customer { get; private set; }
     }
 }
