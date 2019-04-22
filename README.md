@@ -17,6 +17,7 @@ The goal of this project is to share knowledge with the technical community and 
 * [AspNetCore Identity](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio)
 * [C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp)
 * [ValueInjecter](https://github.com/omuleanu/ValueInjecter)
+* [FluentValidation](https://fluentvalidation.net/)
 * [Angular 7.2](https://angular.io/docs)
 * [Typescript 3.2](https://www.typescriptlang.org/docs/home.html)
 * [HTML](https://www.w3schools.com/html)
@@ -29,6 +30,7 @@ The goal of this project is to share knowledge with the technical community and 
 * Clean Code
 * SOLID Principles
 * DDD (Domain-Driven Design)
+* Commands and Handlers
 * Inversion of Control
 * Repository Pattern
 * Database Migrations
