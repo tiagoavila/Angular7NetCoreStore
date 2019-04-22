@@ -14,8 +14,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
+import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
+import { IdentificationComponent } from './components/shopping-cart/identification/identification.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt-token');
@@ -29,7 +31,9 @@ export function tokenGetter() {
     HomeComponent,
     LoginComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    RegisterCustomerComponent,
+    IdentificationComponent
   ],
   imports: [
     BrowserModule,

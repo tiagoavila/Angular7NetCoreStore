@@ -25,7 +25,7 @@ namespace Angular7NetCoreStore.Domain.CommandHandlers
 
             if (_customerRepository.GetByEmail(command.Email) != null)
             {
-                return new CommandResult(false, "Já existe um cliente com o email informado");
+                return new CommandResult(false, "There is already a customer using this email");
             }
 
             var fullName = new FullName(command.Name, command.Surname);
@@ -38,7 +38,7 @@ namespace Angular7NetCoreStore.Domain.CommandHandlers
 
             _customerRepository.SaveChanges();
 
-            return new CommandResult(true, "Cliente cadastrado com sucesso", customer);
+            return new CommandResult(true, "customer successfully registered", customer);
         }
     }
 }

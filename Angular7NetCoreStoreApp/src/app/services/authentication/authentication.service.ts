@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { Customer } from 'src/app/models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,7 @@ export class AuthenticationService {
     };
 
     let credentials = JSON.stringify(loginModel);
-    return this.http.post("http://localhost:5000/api/auth/login", credentials, {
+    return this.http.post(environment.apiUrl + "/auth/login", credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       })
@@ -47,5 +49,9 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem("jwt-token");
     this.loggedIn.next(false);
+  }
+
+  register(customer: Customer) {
+
   }
 }

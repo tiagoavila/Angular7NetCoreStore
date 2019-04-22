@@ -1,0 +1,111 @@
+<h3>Register customer</h3>
+<form class="form" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name">
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+      <div *ngIf="messageForm.controls.name.errors.required" class="text-danger">Your Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>SurName</label>
+    <input type="text" class="form-control" formControlName="surName">
+    <div *ngIf="submitted && messageForm.controls.surName.errors" class="error">
+      <div *ngIf="messageForm.controls.surName.errors.required" class="text-danger">Your surName is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" formControlName="email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+      <div *ngIf="messageForm.controls.email.errors.required" class="text-danger">Your email is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">PhoneNumber</label>
+    <div class="row">
+      <div class="col-2">
+        <input type="text" class="form-control" formControlName="areaCode">
+      </div>
+      <div class="col-10">
+        <input type="text" class="form-control" formControlName="phoneNumber">
+      </div>
+    </div>
+    <div *ngIf="submitted && (messageForm.controls.phoneNumber.errors || messageForm.controls.areaCode.errors)"
+      class="error">
+      <div *ngIf="messageForm.controls.areaCode.errors.required" class="text-danger">areaCode is required</div>
+      <div *ngIf="messageForm.controls.phoneNumber.errors.required" class="text-danger">phoneNumber is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" formControlName="password">
+    <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+      <div *ngIf="messageForm.controls.password.errors.required" class="text-danger">Your password is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Confirm Password</label>
+    <input type="password" class="form-control" formControlName="confirmPassword">
+    <div *ngIf="submitted && messageForm.controls.confirmPassword.errors" class="error">
+      <div *ngIf="messageForm.controls.confirmPassword.errors.required" class="text-danger">confirmPassword is required
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="form-group">
+    <label>Street</label>
+    <input type="text" class="form-control" formControlName="street">
+    <div *ngIf="submitted && messageForm.controls.street.errors" class="error">
+      <div *ngIf="messageForm.controls.street.errors.required" class="text-danger">street is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Number</label>
+    <input type="text" class="form-control" formControlName="number">
+    <div *ngIf="submitted && messageForm.controls.number.errors" class="error">
+      <div *ngIf="messageForm.controls.number.errors.required" class="text-danger">number is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Complement</label>
+    <input type="text" class="form-control" formControlName="complement">
+  </div>
+  <div class="form-group">
+    <label>District</label>
+    <input type="text" class="form-control" formControlName="district">
+    <div *ngIf="submitted && messageForm.controls.district.errors" class="error">
+      <div *ngIf="messageForm.controls.district.errors.required" class="text-danger">district is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input type="text" class="form-control" formControlName="city">
+    <div *ngIf="submitted && messageForm.controls.city.errors" class="error">
+      <div *ngIf="messageForm.controls.city.errors.required" class="text-danger">city is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>State</label>
+    <input type="text" class="form-control" formControlName="state">
+    <div *ngIf="submitted && messageForm.controls.state.errors" class="error">
+      <div *ngIf="messageForm.controls.state.errors.required" class="text-danger">state is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Country</label>
+    <input type="text" class="form-control" formControlName="country">
+    <div *ngIf="submitted && messageForm.controls.country.errors" class="error">
+      <div *ngIf="messageForm.controls.country.errors.required" class="text-danger">country is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>ZipCode</label>
+    <input type="text" class="form-control" formControlName="zipCode">
+    <div *ngIf="submitted && messageForm.controls.zipCode.errors" class="error">
+      <div *ngIf="messageForm.controls.zipCode.errors.required" class="text-danger">zipCode is required</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>
