@@ -4,7 +4,7 @@ export class Customer {
     email: string;
     password: string;
     areaCode: string;
-    phoneNumer: string;
+    phoneNumber: string;
     street: string;
     number: string;
     complement: string;
@@ -13,4 +13,5 @@ export class Customer {
     state: string;
     country: string;
     zipCode: string;
+    birthDate: Date;
 }

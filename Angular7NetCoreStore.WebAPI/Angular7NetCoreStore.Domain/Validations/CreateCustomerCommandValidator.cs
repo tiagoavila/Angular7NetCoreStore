@@ -10,8 +10,8 @@ namespace Angular7NetCoreStore.Domain.Validations
             RuleFor(c => c.Name).NotNull().NotEmpty();
             RuleFor(c => c.Surname).NotNull().NotEmpty();
             RuleFor(c => c.Email).NotNull().NotEmpty();
-            RuleFor(c => c.AreaCode).NotNull().NotEmpty().MinimumLength(2);
-            RuleFor(c => c.PhoneNumber).NotNull().NotEmpty().MinimumLength(9);
+            RuleFor(c => c.AreaCode).NotNull().NotEmpty().MinimumLength(2).MaximumLength(2);
+            RuleFor(c => c.PhoneNumber).NotNull().NotEmpty().MinimumLength(8).MaximumLength(10);
             RuleFor(c => c.Street).NotNull().NotEmpty();
             RuleFor(c => c.Number).NotNull().NotEmpty();
             RuleFor(c => c.District).NotNull().NotEmpty();

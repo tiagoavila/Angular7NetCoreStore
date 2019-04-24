@@ -1,18 +1,24 @@
 <div class="row">
   <div class="col-12 mt-2 mb-2">
-      <a (click)="backClicked()" class="btn btn-outline-secondary btn-back">&laquo; Back</a>
+    <a (click)="backClicked()" class="btn btn-outline-secondary btn-back">&laquo; Back</a>
   </div>
 </div>
-<div class="row">
-  <div class="col-12">
-      <h1>{{product.title}}</h1>
+<div class="row" *ngIf="product">
+  <div class="col-2">
+    <img class="img-fluid" [src]="product.image" [alt]="product.title">
   </div>
   <div class="col-10">
-      <p>
-          <strong>Description:</strong> {{product.description}}
-        </p>
-  </div>
-  <div class="col-2">
-      <img class="img-fluid" [src]="product.image" [alt]="product.title">
+    <h1>{{product.title}}</h1>
+    <p>
+      <strong>Description:</strong> {{product.description}}
+    </p>
+    <div class="row">
+      <div class="col-2">
+        <input type="number" class="form-control">
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary">Add to cart</button>
+      </div>
+    </div>
   </div>
 </div>

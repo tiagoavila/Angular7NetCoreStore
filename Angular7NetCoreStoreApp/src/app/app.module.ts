@@ -5,8 +5,12 @@ import { NgModule } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ErrorInterceptor } from './interceptors/httperror.interceptor';
+import { LoaderService } from './services/helpers/loader/loader.service';
+import { LoaderInterceptor } from './interceptors/loader-interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +22,8 @@ import { ProductListComponent } from './components/product/product-list/product-
 import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
 import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
 import { IdentificationComponent } from './components/shopping-cart/identification/identification.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt-token');
@@ -33,13 +39,17 @@ export function tokenGetter() {
     ProductListComponent,
     ProductDetailComponent,
     RegisterCustomerComponent,
-    IdentificationComponent
+    IdentificationComponent,
+    AlertComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    NgbModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -48,7 +58,9 @@ export function tokenGetter() {
     })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

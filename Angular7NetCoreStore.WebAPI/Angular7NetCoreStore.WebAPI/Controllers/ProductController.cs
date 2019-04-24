@@ -7,7 +7,6 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductAppService _productAppService;

@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
 
   constructor(
-    private formBuilder: FormBuilder, 
-    private http: HttpClient, 
-    private router: Router, 
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
     private route: ActivatedRoute,
     private authService: AuthenticationService) { }
 
@@ -40,19 +40,19 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     if (this.messageForm.invalid) {
-        return;
+      return;
     }
 
     this.authService.login(this.messageForm.controls.userName.value, this.messageForm.controls.password.value)
       .pipe(first())
       .subscribe(
-          data => {
-            this.invalidLogin = false;
-            this.router.navigate([this.returnUrl]);
-          },
-          error => {
-            //this.error = error;
-            this.invalidLogin = true;
-          });
+        data => {
+          this.invalidLogin = false;
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          //this.error = error;
+          this.invalidLogin = true;
+        });
   }
 }

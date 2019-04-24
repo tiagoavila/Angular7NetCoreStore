@@ -9,12 +9,13 @@ import { IdentificationComponent } from './components/shopping-cart/identificati
 import { AuthGuard } from './guards/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'products', component: ProductListComponent, canActivate: [AuthGuard] },
-  { path: 'products/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
-  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'shoppingcart/identification', component: IdentificationComponent },
+  //{ path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

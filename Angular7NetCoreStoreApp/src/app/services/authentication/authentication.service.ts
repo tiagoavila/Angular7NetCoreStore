@@ -52,6 +52,11 @@ export class AuthenticationService {
   }
 
   register(customer: Customer) {
-
+    let customerJson = JSON.stringify(customer);
+    return this.http.post(environment.apiUrl + "/auth/register", customerJson, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    });
   }
 }
