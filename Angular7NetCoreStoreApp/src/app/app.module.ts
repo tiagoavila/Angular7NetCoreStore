@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { ErrorInterceptor } from './interceptors/httperror.interceptor';
 import { LoaderService } from './services/helpers/loader/loader.service';
@@ -50,6 +51,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     NgbModule,
+    FormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

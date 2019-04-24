@@ -14,11 +14,12 @@
     </p>
     <div class="row">
       <div class="col-2">
-        <input type="number" class="form-control">
+        <input type="number" class="form-control" [ngClass]="{ 'is-invalid': amountProductToChartIsInvalid }" [(ngModel)]="amountProductToChart">
+        <p class="text-danger" *ngIf="amountProductToChartIsInvalid">{{errorMessage}}</p>
       </div>
       <div class="col-2">
-        <button class="btn btn-primary">Add to cart</button>
+        <button class="btn btn-primary" (click)="addProductToCart()">Add to cart</button>
       </div>
     </div>
   </div>
-</div>
+</div> 
