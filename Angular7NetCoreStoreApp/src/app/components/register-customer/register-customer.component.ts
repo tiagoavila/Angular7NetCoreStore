@@ -70,12 +70,12 @@ export class RegisterCustomerComponent implements OnInit {
           console.log("regiter ok");
           // this.invalidLogin = false;
           // this.router.navigate([this.returnUrl]);
-          this.alertService.success("Customer registered with success");
+          this.alertService.sendSuccessMessage("Customer registered with success");
         },
         error => {
           //this.error = error;
           console.log("regiter no ok");
-          this.alertService.error("Error when registering customer");
+          this.alertService.sendErrorMessage("Error when registering customer");
         });
   }
 

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-12">
+    <h1>Cart Review</h1>
+
+    <table class="table table-striped table-products" *ngIf="shoppingCart">
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Title</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of shoppingCart.products">
+          <td><img [src]="product.image" [alt]="product.title" style="height: 80px; width: 80px;"></td>
+          <td>{{product.title}}</td>
+          <td>{{product.price | currency}}</td>
+          <td>{{product.amountProductToCart}}</td>
+          <td>{{product.price * product.amountProductToCart | currency}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4"></th>
+          <th>Total: {{totalCart | currency}}</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="col-2 offset-10 text-right">
+    <a class="btn btn-primary" routerLink="/shoppingcart/identification">Next</a>
+  </div>
+</div>

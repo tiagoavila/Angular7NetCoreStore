@@ -5,5 +5,5 @@ export class Product {
     image: string;
     price: number;
     quantityOnHand: number;
-    amountProductToChart: number;
+    amountProductToCart: number;
 }

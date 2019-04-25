@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+
 import { ProductRestService } from '../../../services/rest/product-rest.service';
+import { ShoppingCartService } from '../../../services/shopping-cart/shopping-cart.service';
+
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -16,7 +19,11 @@ export class ProductDetailComponent implements OnInit {
   amountProductToChartIsInvalid: boolean = false;
   errorMessage: string = '';
 
-  constructor(private route: ActivatedRoute, private location: Location, private productRest: ProductRestService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private location: Location, 
+    private productRest: ProductRestService,
+    private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     var productId = this.route.snapshot.params.id;
@@ -32,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
   addProductToCart() {
     this.amountProductToChartIsInvalid = false;
 
-    if (this.amountProductToChart == 0) {
+    if (this.amountProductToChart <= 0) {
       this.amountProductToChartIsInvalid = true;
       this.errorMessage = "Selected quantity must be greater than zero.";
       return;
@@ -44,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
       return;
     }
 
-    console.log('added');
+    this.shoppingCartService.addProduct(this.product, this.amountProductToChart);
+    this.amountProductToChart = 0;
   }
-
 }

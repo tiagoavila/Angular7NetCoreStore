@@ -24,14 +24,19 @@ export class AlertService {
     });
   }
 
-  success(message: string, keepAfterNavigationChange = false) {
+  sendSuccessMessage(message: string, keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
     this.subject.next({ type: 'success', text: message });
   }
 
-  error(message: string, keepAfterNavigationChange = false) {
+  sendErrorMessage(message: string, keepAfterNavigationChange = false) {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({ type: 'error', text: message });
+    this.subject.next({ type: 'danger', text: message });
+  }
+
+  sendWarningMessage(message: string, keepAfterNavigationChange = false) {
+    this.keepAfterNavigationChange = keepAfterNavigationChange;
+    this.subject.next({ type: 'warning', text: message });
   }
 
   getMessage(): Observable<any> {

@@ -42,6 +42,7 @@ export class AuthenticationService {
       if ((<any>response).token) {
         let token = (<any>response).token;
         localStorage.setItem("jwt-token", token);
+        this.loggedIn.next(true);
       }
     }));
   }
