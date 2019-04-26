@@ -26,6 +26,7 @@ import { IdentificationComponent } from './components/shopping-cart/identificati
 import { AlertComponent } from './components/alert/alert.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ReviewComponent } from './components/shopping-cart/review/review.component';
+import { FinishComponent } from './components/shopping-cart/finish/finish.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt-token');
@@ -44,7 +45,8 @@ export function tokenGetter() {
     IdentificationComponent,
     AlertComponent,
     LoaderComponent,
-    ReviewComponent
+    ReviewComponent,
+    FinishComponent
   ],
   imports: [
     BrowserModule,

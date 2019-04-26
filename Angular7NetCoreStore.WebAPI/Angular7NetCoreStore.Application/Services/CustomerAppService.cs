@@ -1,4 +1,5 @@
-﻿using Angular7NetCoreStore.Application.Dtos;
+﻿using Angular7NetCoreStore.Application.CustomMappings;
+using Angular7NetCoreStore.Application.Dtos;
 using Angular7NetCoreStore.Application.Interfaces;
 using Angular7NetCoreStore.Domain.CommandHandlers;
 using Angular7NetCoreStore.Domain.Commands.Inputs;
@@ -27,6 +28,8 @@ namespace Angular7NetCoreStore.Application
             _customerRepository = customerRepository;
             _userManager = userManager;
             _customerCommandHandler = customerCommandHandler;
+
+            //CustomMappingConfigs.AddCustomMappings();
         }
 
         public IEnumerable<CustomerDto> GetAll()
@@ -35,6 +38,20 @@ namespace Angular7NetCoreStore.Application
                 .Select(x => new CustomerDto().InjectFrom(x)).Cast<CustomerDto>();
 
             return customerViewModelsList;
+        }
+
+        public CustomerDto GetById(Guid id)
+        {
+            var customer = _customerRepository.GetById(id);
+
+            return Mapper.Map<CustomerDto>(customer);
+        }
+
+        public CustomerDto GetByEmail(string email)
+        {
+            var customer = _customerRepository.GetByEmail(email);
+
+            return Mapper.Map<CustomerDto>(customer);
         }
 
         public async Task<ICommandResult> AddCustomerAsync(AddCustomerDto addCustomerDto)

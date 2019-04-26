@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WebApiRestService } from './web-api-rest.service';
+import { CustomerService } from './customer.service';
 
-describe('WebApiRestService', () => {
+describe('CustomerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: WebApiRestService = TestBed.get(WebApiRestService);
+    const service: CustomerService = TestBed.get(CustomerService);
     expect(service).toBeTruthy();
   });
 });

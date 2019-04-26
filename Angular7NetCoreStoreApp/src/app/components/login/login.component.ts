@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.invalidLogin = false;
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['/shoppingcart/finish']);
+          // this.router.navigate([this.returnUrl]);
         },
         error => {
           //this.error = error;

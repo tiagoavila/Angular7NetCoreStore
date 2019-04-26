@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { ProductRestService } from '../../../services/rest/product-rest.service';
+import { ProductRestService } from '../../../services/product/product-rest.service';
 import { ShoppingCartService } from '../../../services/shopping-cart/shopping-cart.service';
 
 import { Product } from 'src/app/models/product';

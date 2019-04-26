@@ -52,16 +52,18 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.AuthenticationSettings.SecretKey));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
-                var tokeOptions = new JwtSecurityToken(
+                var tokenOptions = new JwtSecurityToken(
                     issuer: _appSettings.AuthenticationSettings.Issuer,
                     audience: _appSettings.AuthenticationSettings.Audience,
                     claims: new List<Claim>(),
                     expires: DateTime.Now.AddMinutes(60),
                     signingCredentials: signinCredentials
                 );
+                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
 
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                var identityUser = await _userManager.FindByEmailAsync(user.UserName);
+
+                return Ok(new { Token = tokenString, identityUser.CustomerId });
             }
             else
             {
@@ -79,10 +81,10 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
                     var commandResult = await _customerAppService.AddCustomerAsync(addCustomerDto);
                     if (commandResult.Success)
                     {
-                        return Ok();
+                        return Ok(commandResult);
                     }
 
-                    return BadRequest();
+                    return BadRequest(commandResult);
                 }
             }
             catch (System.Exception exception)

@@ -10,6 +10,10 @@ namespace Angular7NetCoreStore.Application.Interfaces
     {
         IEnumerable<CustomerDto> GetAll();
 
+        CustomerDto GetById(Guid id);
+
+        CustomerDto GetByEmail(string email);
+
         Task<ICommandResult> AddCustomerAsync(AddCustomerDto addCustomerDto);
     }
 }

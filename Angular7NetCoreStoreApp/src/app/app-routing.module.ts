@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './components/product/product-detail/prod
 import { IdentificationComponent } from './components/shopping-cart/identification/identification.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { ReviewComponent } from './components/shopping-cart/review/review.component';
+import { FinishComponent } from './components/shopping-cart/finish/finish.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'shoppingcart/identification', component: IdentificationComponent },
   { path: 'shoppingcart/review', component: ReviewComponent },
-  //{ path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
+  { path: 'shoppingcart/finish', component: FinishComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

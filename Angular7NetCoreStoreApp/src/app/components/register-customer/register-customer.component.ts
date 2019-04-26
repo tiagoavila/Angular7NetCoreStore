@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Customer } from 'src/app/models/customer';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { AlertService } from '../../services/helpers/alert/alert.service';
 
@@ -16,7 +18,11 @@ export class RegisterCustomerComponent implements OnInit {
   submitted = false;
   returnUrl: string;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private alertService: AlertService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService,
+    private alertService: AlertService,
+    private router: Router) { }
 
   ngOnInit() {
     this.messageForm = this.formBuilder.group({
@@ -43,7 +49,7 @@ export class RegisterCustomerComponent implements OnInit {
 
     if (this.messageForm.invalid) {
       return;
-    }    
+    }
 
     let customer: Customer = {
       areaCode: this.messageForm.controls.areaCode.value,
@@ -67,14 +73,19 @@ export class RegisterCustomerComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log("regiter ok");
-          // this.invalidLogin = false;
-          // this.router.navigate([this.returnUrl]);
-          this.alertService.sendSuccessMessage("Customer registered with success");
+          this.alertService.sendSuccessMessage("Customer registered with success", true);
+
+          this.authService.login(customer.email, customer.password)
+            .pipe(first())
+            .subscribe(
+              data => {
+                this.router.navigate(['/shoppingcart/finish']);
+              },
+              error => {
+
+              });
         },
         error => {
-          //this.error = error;
-          console.log("regiter no ok");
           this.alertService.sendErrorMessage("Error when registering customer");
         });
   }

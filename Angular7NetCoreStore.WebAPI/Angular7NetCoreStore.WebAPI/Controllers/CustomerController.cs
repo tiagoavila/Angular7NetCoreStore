@@ -1,6 +1,7 @@
 ﻿using Angular7NetCoreStore.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Angular7NetCoreStore.WebAPI.Controllers
 {
@@ -26,9 +27,10 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
 
         // GET: api/Customer/5
         [HttpGet("{id}")]
-        public string GetById(int id)
+        public IActionResult GetById(Guid id)
         {
-            return "value";
+            var customer = _customerAppService.GetById(id);
+            return Ok(customer);
         }
 
         // POST: api/Customer

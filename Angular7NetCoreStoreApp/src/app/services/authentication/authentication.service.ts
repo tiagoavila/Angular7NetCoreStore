@@ -41,7 +41,11 @@ export class AuthenticationService {
       // login successful if there's a jwt token in the response
       if ((<any>response).token) {
         let token = (<any>response).token;
+        let customerId = (<any>response).customerId;
+
         localStorage.setItem("jwt-token", token);
+        localStorage.setItem("customer-id", customerId);
+        
         this.loggedIn.next(true);
       }
     }));

@@ -1,4 +1,5 @@
-﻿using Angular7NetCoreStore.Infra.CrossCutting.Identity.Data;
+﻿using Angular7NetCoreStore.Application.CustomMappings;
+using Angular7NetCoreStore.Infra.CrossCutting.Identity.Data;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.Infra.CrossCutting.IoC;
 using Angular7NetCoreStore.WebAPI.Extensions;
@@ -62,6 +63,8 @@ namespace Angular7NetCoreStore.WebAPI
 
             // .NET Native DI Abstraction
             RegisterServices(services);
+
+            CustomMappingConfigs.AddCustomMappings();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
