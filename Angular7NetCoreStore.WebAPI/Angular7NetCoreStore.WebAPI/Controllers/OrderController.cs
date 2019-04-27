@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Angular7NetCoreStore.Application.Interfaces;
+using Angular7NetCoreStore.Domain.Commands.Inputs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +15,13 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
     [Authorize]
     public class OrderController : ControllerBase
     {
+        private readonly IOrderAppService _orderAppService;
+
+        public OrderController(IOrderAppService orderAppService)
+        {
+            _orderAppService = orderAppService;
+        }
+
         // GET: api/Order
         [HttpGet]
         public IEnumerable<string> Get()
@@ -29,8 +38,15 @@ namespace Angular7NetCoreStore.WebAPI.Controllers
 
         // POST: api/Order
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody]CreateOrderCommand createOrderCommand)
         {
+            var commandResult = _orderAppService.AddOrder(createOrderCommand);
+            if (commandResult.Success)
+            {
+                return Ok(commandResult);
+            }
+
+            return BadRequest(commandResult);
         }
 
         // PUT: api/Order/5

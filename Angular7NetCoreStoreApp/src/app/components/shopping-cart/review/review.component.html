@@ -24,12 +24,12 @@
       <tfoot>
         <tr>
           <th colspan="4"></th>
-          <th>Total: {{totalCart | currency}}</th>
+          <th>Total: {{shoppingCart.totalCart | currency}}</th>
         </tr>
       </tfoot>
     </table>
   </div>
   <div class="col-2 offset-10 text-right">
-    <a class="btn btn-primary" routerLink="/shoppingcart/identification">Next</a>
+    <a class="btn btn-primary" (click)="goToNextPage()">Next</a>
   </div>
 </div>

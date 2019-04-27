@@ -2,9 +2,7 @@
 using Angular7NetCoreStore.Application.Interfaces;
 using Angular7NetCoreStore.Application.Services;
 using Angular7NetCoreStore.Domain.CommandHandlers;
-using Angular7NetCoreStore.Domain.Commands.Inputs;
 using Angular7NetCoreStore.Domain.Interfaces;
-using Angular7NetCoreStore.Domain.Shared.Commands;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Models;
 using Angular7NetCoreStore.Infra.CrossCutting.Identity.Services;
 using Angular7NetCoreStore.Infra.Data.Context;
@@ -21,14 +19,17 @@ namespace Angular7NetCoreStore.Infra.CrossCutting.IoC
             // Application
             services.AddScoped<ICustomerAppService, CustomerAppService>();
             services.AddScoped<IProductAppService, ProductAppService>();
+            services.AddScoped<IOrderAppService, OrderAppService>();
 
             //Domain - Commands
             services.AddScoped<CustomerCommandHandler>();
+            services.AddScoped<OrderCommandHandler>();
             //services.AddScoped<ICommandHandler<CreateCustomerCommand>, CustomerCommandHandler>();
 
             // Infra - Data
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<Angular7NetCoreStoreContext>();
 

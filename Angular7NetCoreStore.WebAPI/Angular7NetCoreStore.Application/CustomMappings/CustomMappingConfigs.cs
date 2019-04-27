@@ -13,6 +13,7 @@ namespace Angular7NetCoreStore.Application.CustomMappings
                 var target = new CustomerDto();
                 target.InjectFrom(from);
 
+                target.Name = $"{from.FullName.Name} {from.FullName.Surname}";
                 target.Email = from.Email.Address;
                 target.PhoneNumber = $"({from.PhoneNumber.AreaCode}) {from.PhoneNumber.Number}";
                 target.Complement = from.Address.Complement;

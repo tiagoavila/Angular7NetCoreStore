@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -13,7 +12,9 @@ import { Customer } from 'src/app/models/customer';
 export class AuthenticationService {
   private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private router: Router, private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(
+    private http: HttpClient, 
+    private jwtHelper: JwtHelperService) { }
 
   get isLoggedIn() {
     var token = this.jwtHelper.tokenGetter();
@@ -63,5 +64,9 @@ export class AuthenticationService {
         "Content-Type": "application/json"
       })
     });
+  }
+
+  getCustomerId() {
+    return localStorage.getItem("customer-id");
   }
 }

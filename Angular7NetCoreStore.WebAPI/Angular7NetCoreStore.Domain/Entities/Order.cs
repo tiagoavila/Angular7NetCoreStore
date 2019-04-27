@@ -4,18 +4,19 @@ using Angular7NetCoreStore.Domain.Shared;
 using Angular7NetCoreStore.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Angular7NetCoreStore.Domain
 {
     public class Order : EntityBase
     {
-        public Order(Guid customerId, Address address)
+        public Order(Guid customerId, Address address, IEnumerable<OrderItem> orderItems)
         {
             CustomerId = customerId;
             Address = address;
             CreateDate = DateTime.Now;
             Status = EOrderStatus.Created;
-            _orderItems = new List<OrderItem>();
+            _orderItems = orderItems.ToList();
         }
 
         protected Order()
@@ -25,7 +26,6 @@ namespace Angular7NetCoreStore.Domain
 
         public Guid CustomerId { get; private set; }
         public Customer Customer { get; private set; }
-        public DateTime CreateDate { get; private set; }
         public EOrderStatus Status { get; private set; }
         public Address Address { get; private set; }
 
@@ -34,10 +34,6 @@ namespace Angular7NetCoreStore.Domain
 
         public void AddItem(Product product, int quantity)
         {
-            //TODO: Study about how to implement validation
-            //if (quantity > product.QuantityOnHand)
-            //    AddNotification("OrderItem", $"Produto {product.Title} não tem {quantity} itens em estoque.");
-
             var orderItem = new OrderItem(product, quantity);
             _orderItems.Add(orderItem);
         }

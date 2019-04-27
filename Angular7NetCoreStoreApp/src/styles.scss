@@ -11,3 +11,8 @@
 .pt-20 {
     padding-top: 20px;
 }
+
+a.btn:not(.btn-outline-secondary) {
+    color: white !important;
+    cursor: pointer;
+}

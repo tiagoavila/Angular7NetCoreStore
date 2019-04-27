@@ -10,9 +10,7 @@ namespace Angular7NetCoreStore.Domain.Entities
             Product = product;
             Quantity = quantity;
             Price = product.Price;
-
-            //if (product.QuantityOnHand < quantity)
-            //    AddNotification("Quantity", "Produto fora de estoque");
+            CreateDate = DateTime.Now;
 
             product.DecreaseQuantity(quantity);
         }

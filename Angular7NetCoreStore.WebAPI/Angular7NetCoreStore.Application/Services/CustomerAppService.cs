@@ -28,8 +28,6 @@ namespace Angular7NetCoreStore.Application
             _customerRepository = customerRepository;
             _userManager = userManager;
             _customerCommandHandler = customerCommandHandler;
-
-            //CustomMappingConfigs.AddCustomMappings();
         }
 
         public IEnumerable<CustomerDto> GetAll()

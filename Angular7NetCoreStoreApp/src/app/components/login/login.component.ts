@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         data => {
           this.invalidLogin = false;
           this.router.navigate(['/shoppingcart/finish']);
-          // this.router.navigate([this.returnUrl]);
         },
         error => {
           //this.error = error;

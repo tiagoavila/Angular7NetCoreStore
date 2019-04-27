@@ -35,7 +35,6 @@ namespace Angular7NetCoreStore.Domain.CommandHandlers
             var customer = new Customer(fullName, email, phoneNumber, command.BirthDate, address);
 
             _customerRepository.Add(customer);
-
             _customerRepository.SaveChanges();
 
             return new CommandResult(true, "customer successfully registered", customer);
