@@ -45,7 +45,7 @@ After cloning or downloading the project you should be able to run it as soon as
 
 1. In your SQL Server create an empty database called AngularNetCoreStoreDB
 
-2. Open the 'appsettings.json' in 'Angular7NetCoreStore.WebAPI' and change the DefaultConnection to match with your SQL Server configuration
+2. Open the `appsettings.json` in `Angular7NetCoreStore.WebAPI` and change the DefaultConnection to match with your SQL Server configuration
 
 ### Generate the tables
 
