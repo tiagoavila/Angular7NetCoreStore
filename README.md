@@ -38,3 +38,33 @@ The goal of this project is to share knowledge with the technical community and 
 * Auhorization
 
 ## How to use
+
+After cloning or downloading the project you should be able to run it as soon as you configure the SQL Connection string and generate the database.
+
+### Configure the SQL Connection string
+
+1. In your SQL Server create an empty database called AngularNetCoreStoreDB
+
+2. Open the 'appsettings.json' in 'Angular7NetCoreStore.WebAPI' and change the DefaultConnection to match with your SQL Server configuration
+
+### Generate the tables
+
+Now you need to generate the Domain and Identity tables.
+
+1. Set 'Angular7NetCoreStore.WebAPI' as Startup Project and make sure that the connection string is correct.
+
+2. Open your 'Package Manager Console', set 'Angular7NetCoreStore.Infra.Data' as Default project and run the following command:
+'Update-Database -Verbose -Context Angular7NetCoreStoreContext'
+
+3. Now set 'Angular7NetCoreStore.Infra.CrossCutting.Identity' as the Default project and run the command:
+'Update-Database -Verbose -Context ApplicationDbContext'
+
+If everything was right you have the tables created successfully.
+
+### Running the project
+
+1. On Visual Studio 2017, run the project 'Angular7NetCoreStore.WebAPI'.
+
+2. On VSCode, open the folder 'Angular7NetCoreStoreApp', then open you command prompt and run 'npm install'
+
+3. After install all Angular dependencies, run the command 'ng serve -o' and the project should be running for you test the features.
