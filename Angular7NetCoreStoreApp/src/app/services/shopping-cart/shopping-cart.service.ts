@@ -23,6 +23,7 @@ export class ShoppingCartService {
     private http: HttpClient) { }
 
   get checkIfCartHasItems() {
+    //used when the application is initialized, to verify if there are already items in the cart
     var cart = this.getCart();
     if (cart.products.length > 0) {
       this.subjectCartHasItems.next(true);
