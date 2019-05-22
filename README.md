@@ -36,3 +36,5 @@ The goal of this project is to share knowledge with the technical community and 
 * Database Migrations
 * Authentication
 * Auhorization
+
+## How to use
