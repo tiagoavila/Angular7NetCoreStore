@@ -69,7 +69,7 @@ If everything was right you have the tables created successfully.
 
 1. On Visual Studio 2017, run the project `Angular7NetCoreStore.WebAPI`.
 
-2. On VSCode, open the folder `Angular7NetCoreStoreApp`, then open you command prompt and run 
+2. On VSCode, open the folder `Angular7NetCoreStoreApp`, then open your command prompt and run 
 ```
     npm install
 ```
